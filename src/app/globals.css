@@ -1,4 +1,7 @@
 :root {
+  /* Fonts */
+  --font-sans: var(--gogle-font);
+  /* Colors */
   --sky-400: 198 93% 60%;
   --sky-500: 199 89% 48%;
   --sky-950: 204 80% 16%;
@@ -17,16 +20,8 @@
 
 * {
   box-sizing: border-box;
-}
-
-#noise {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.1;
+  margin: 0;
+  border: none;
 }
 
 body {
@@ -56,24 +51,14 @@ body::before {
   background: linear-gradient(to bottom, transparent 0, hsl(var(--slate-950)) 90dvh), linear-gradient(90deg, hsl(var(--sky-500) / .25) 0, hsl(var(--fuchsia-500) / .25) 100%);
 }
 
-nav {
-  display: flex;
-  padding: 0.75rem 2rem;
-  gap: 2rem;
-  position: relative;
-  background-color: hsl(var(--slate-900) / .8);
-  border: 2px solid black;
-  border-radius: 0.5rem;
-  justify-content: space-between;
-  font-weight: bold;
-  font-size: 1.125rem;
-  max-width: calc(65ch * 1.5);
+#noise {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  margin: 0 auto;
-}
-
-nav > p {
-  cursor: default;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.1;
 }
 
 a[href] {
@@ -96,36 +81,10 @@ a[href]:has(svg):hover {
   transform: scale(1.3);
 }
 
-section {
+header, section {
   max-width: 65ch;
   width: 100%;
   margin: 0 auto;
-}
-
-.splash {
-  display: grid;
-  grid-template-columns: 1fr 130px;
-  grid-template-rows: repeat(3, max-content);
-  row-gap: 1.25rem;
-  column-gap: 2.5rem;
-}
-
-.splash>h1 {
-  margin: 0px;
-  align-self: center;
-}
-
-.splash>img {
-  border-radius: 4px;
-  border: 2px solid black;
-  grid-row: 1 / -1;
-  grid-column-start: 2;
-  aspect-ratio: 31 / 41;
-  width: 100%;
-  align-self: center;
-  object-fit: cover;
-  overflow: hidden;
-  margin: 0;
 }
 
 section {
@@ -134,9 +93,8 @@ section {
   gap: 1rem;
 }
 
-#education ul {
-  list-style: none;
-  margin: 0.5rem 0px;
+main {
+  display: contents;
 }
 
 h1 {
@@ -153,39 +111,17 @@ h3 {
   font-size: 1.375rem;
 }
 
-h1,
-h2,
-h3,
-p,
-ul,
-dl {
-  margin: 0px;
-}
-
-#skills ul {
-  margin-left: -1.5rem;
-}
-
 h2,
 h3 {
   text-align: center;
 }
 
-#education li,
+ul {
+  list-style-type: none;
+}
+
 dd {
   font-style: italic;
-}
-
-#experience>div {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.splash>p {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
 }
 
 hr {
@@ -214,50 +150,7 @@ a:has(svg) {
   justify-content: center;
 }
 
-.three-col {
-  /* position: absolute; */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 100dvw;
-  max-width: calc(65ch * 1.5);
-  margin-left: calc(65ch * -0.25);
-  gap: 1.5rem;
-  height: 100%;
-}
-
-.card {
-  padding: 1rem 1.5rem;
-  background-color: hsl(var(--slate-800));
-  border-radius: 8px;
-  border: 3px solid black;
-  display: flex;
-  /* Credit: https://www.joshwcomeau.com/shadow-palette/ */
-  --shadow-color: var(--sky-950);
-  box-shadow:
-    0.5px 0.5px 0.9px hsl(var(--shadow-color) / 0.12),
-    1.4px 1.4px 2.5px -0.4px hsl(var(--shadow-color) / 0.15),
-    2.5px 2.5px 4.5px -0.8px hsl(var(--shadow-color) / 0.18),
-    4.5px 4.6px 8.1px -1.2px hsl(var(--shadow-color) / 0.2),
-    8.3px 8.4px 14.9px -1.6px hsl(var(--shadow-color) / 0.23);
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.card>img {
-  border-radius: 6px;
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  margin-bottom: 0.5rem;
-  border: 2px solid black;
-  background-color: hsl(var(--slate-950));
-}
-
-.card ul {
-  margin-left: -1rem;
-  font-size: 0.925rem;
-}
-
-.one-col {
+form {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -266,7 +159,7 @@ a:has(svg) {
   margin: 0 auto;
 }
 
-form {
+fieldset {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -311,13 +204,16 @@ button {
   font-family: inherit;
   font-weight: bold;
   color: white;
-  --gradient-terminus: bottom;
-  background: linear-gradient(to var(--gradient-terminus), hsl(var(--emerald-500) / 10%), hsl(var(--emerald-600) / 30%));
+  --gradient-direction: bottom;
+  background: linear-gradient(to var(--gradient-direction), hsl(var(--emerald-500) / 10%), hsl(var(--emerald-600) / 30%));
   border: 2px solid hsl(var(--emerald-600));
   border-bottom-width: 6px;
   border-radius: 8px;
   cursor: pointer;
   appearance: none;
+  transition-property: border-bottom-width margin-top;
+  transition-timing-function: ease-out;
+  transition-duration: 75ms;
 }
 
 button:hover {
@@ -326,7 +222,7 @@ button:hover {
 }
 
 button:active {
-  --gradient-terminus: top;
+  --gradient-direction: top;
 }
 
 label:has([required])>span::after {

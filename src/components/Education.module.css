@@ -1,0 +1,8 @@
+.education ul {
+  list-style: none;
+  margin: 0.5rem 0px;
+}
+
+.education li {
+  font-style: italic;
+}
